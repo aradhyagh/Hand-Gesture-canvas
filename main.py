@@ -7,9 +7,6 @@ from logic import is_first_finger_up
 
 MODEL_PATH = r"C:\Users\User\Downloads\hand_landmarker.task"
 
-# --------------------------
-# Create detector (VIDEO MODE)
-# --------------------------
 BaseOptions = python.BaseOptions
 VisionRunningMode = vision.RunningMode
 
@@ -24,9 +21,8 @@ options = vision.HandLandmarkerOptions(
 
 detector = vision.HandLandmarker.create_from_options(options)
 
-# --------------------------
 # Webcam loop
-# --------------------------
+
 cap = cv2.VideoCapture(0)
 timestamp = 0
 
@@ -57,9 +53,7 @@ while True:
                 py = int(lm.y * h)
                 kpts.append((hand_idx, (px, py)))
 
-    # --------------------------
     # DRAWING LOGIC (index finger)
-    # --------------------------
     if is_first_finger_up(kpts):
         if len(kpts) >= 9 and kpts[8][0] == 0:  # landmark 8 = index finger tip
             x, y = kpts[8][1]
@@ -73,23 +67,17 @@ while True:
     else:
         prev_point = None
 
-    # ---------------------------------------
     # MERGE CANVAS → FRAME (NO transparency)
-    # ---------------------------------------
     mask = cv2.cvtColor(canvas, cv2.COLOR_BGR2GRAY)
     _, mask = cv2.threshold(mask, 10, 255, cv2.THRESH_BINARY)
 
     frame[mask == 255] = canvas[mask == 255]
 
-    # ---------------------------------------
     # Debug keypoints
-    # ---------------------------------------
     for hand, kpt in kpts:
         cv2.circle(frame, kpt, 3, (255, 0, 0), cv2.FILLED)
 
-    # ---------------------------------------
     # TOP TEXT (Blue with Black Border)
-    # ---------------------------------------
     text = "Finger Canvas"
     font = cv2.FONT_HERSHEY_SIMPLEX
     scale = 1.2
@@ -105,3 +93,4 @@ while True:
 
 cap.release()
 cv2.destroyAllWindows()
+
