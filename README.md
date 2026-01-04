@@ -5,18 +5,18 @@ You can draw on the screen using **only your index finger**, just like an invisi
 
 ---
 
-## ✨ Features
+## Features
 
-- 📷 Real-time webcam hand tracking
-- ☝️ Draw **only when the index finger is up**
-- ✊ Automatically stops drawing when other fingers are raised
-- 🖍️ Smooth continuous drawing on a virtual canvas
-- 🧠 Gesture logic separated into clean, reusable code
-- 🖐️ Supports up to **2 hands** (uses Hand 0 for drawing)
+- Real-time webcam hand tracking
+- Draw **only when the index finger is up**
+- Automatically stops drawing when other fingers are raised
+- Smooth continuous drawing on a virtual canvas
+- Gesture logic separated into clean, reusable code
+- Supports up to **2 hands** (uses Hand 0 for drawing)
 
 ---
 
-## 🧠 Gesture Logic
+## Gesture Logic
 
 Drawing is enabled **only if**:
 - Index finger is **up**
@@ -28,7 +28,7 @@ This ensures accurate and intentional drawing.
 ---
 
 
-## 🧩 Requirements
+## Requirements
 
 Install all dependencies before running:
 
